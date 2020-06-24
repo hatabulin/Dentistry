@@ -12,10 +12,10 @@ namespace Dentistry {
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
-	public ref class MyForm : public System::Windows::Forms::Form
+	public ref class FormPatient : public System::Windows::Forms::Form
 	{
 	public:
-		MyForm(void)
+		FormPatient(void)
 		{
 			InitializeComponent();
 			//
@@ -27,7 +27,7 @@ namespace Dentistry {
 		/// <summary>
 		/// Освободить все используемые ресурсы.
 		/// </summary>
-		~MyForm()
+		~FormPatient()
 		{
 			if (components)
 			{
@@ -91,24 +91,24 @@ namespace Dentistry {
 			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
-			this->label7 = (gcnew System::Windows::Forms::Label());
-			this->label9 = (gcnew System::Windows::Forms::Label());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
-			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->label10 = (gcnew System::Windows::Forms::Label());
-			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
-			this->label5 = (gcnew System::Windows::Forms::Label());
-			this->label15 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
+			this->label10 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label9 = (gcnew System::Windows::Forms::Label());
+			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -184,6 +184,7 @@ namespace Dentistry {
 			this->button2->TabIndex = 7;
 			this->button2->Text = L"Отмена";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &FormPatient::button2_Click);
 			// 
 			// richTextBox1
 			// 
@@ -233,12 +234,136 @@ namespace Dentistry {
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Персональные данные";
 			// 
-			// textBox4
+			// label15
 			// 
-			this->textBox4->Location = System::Drawing::Point(62, 176);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(30, 20);
-			this->textBox4->TabIndex = 7;
+			this->label15->AutoSize = true;
+			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label15->Location = System::Drawing::Point(8, 300);
+			this->label15->Name = L"label15";
+			this->label15->Size = System::Drawing::Size(73, 16);
+			this->label15->TabIndex = 24;
+			this->label15->Text = L"Контакты:";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(6, 151);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(141, 16);
+			this->label5->TabIndex = 23;
+			this->label5->Text = L"Паспортные данные";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label14->Location = System::Drawing::Point(5, 109);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(110, 16);
+			this->label14->TabIndex = 22;
+			this->label14->Text = L"Дата рождения:";
+			// 
+			// textBox10
+			// 
+			this->textBox10->Location = System::Drawing::Point(176, 109);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(64, 20);
+			this->textBox10->TabIndex = 21;
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label13->Location = System::Drawing::Point(5, 259);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(48, 16);
+			this->label13->TabIndex = 20;
+			this->label13->Text = L"Адрес";
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(68, 258);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(187, 20);
+			this->textBox9->TabIndex = 19;
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label12->Location = System::Drawing::Point(5, 231);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(130, 16);
+			this->label12->TabIndex = 18;
+			this->label12->Text = L"Город проживания";
+			// 
+			// textBox8
+			// 
+			this->textBox8->Location = System::Drawing::Point(138, 230);
+			this->textBox8->Name = L"textBox8";
+			this->textBox8->Size = System::Drawing::Size(117, 20);
+			this->textBox8->TabIndex = 17;
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label11->Location = System::Drawing::Point(7, 328);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(151, 16);
+			this->label11->TabIndex = 16;
+			this->label11->Text = L"Номер моб. телефона";
+			// 
+			// textBox7
+			// 
+			this->textBox7->Location = System::Drawing::Point(164, 328);
+			this->textBox7->Name = L"textBox7";
+			this->textBox7->Size = System::Drawing::Size(91, 20);
+			this->textBox7->TabIndex = 15;
+			// 
+			// label10
+			// 
+			this->label10->AutoSize = true;
+			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label10->Location = System::Drawing::Point(351, 16);
+			this->label10->Name = L"label10";
+			this->label10->Size = System::Drawing::Size(42, 16);
+			this->label10->TabIndex = 14;
+			this->label10->Text = L"Фото";
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(275, 36);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(198, 184);
+			this->pictureBox1->TabIndex = 13;
+			this->pictureBox1->TabStop = false;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(5, 204);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(51, 16);
+			this->label7->TabIndex = 11;
+			this->label7->Text = L"Номер";
+			// 
+			// textBox5
+			// 
+			this->textBox5->Location = System::Drawing::Point(62, 204);
+			this->textBox5->Name = L"textBox5";
+			this->textBox5->Size = System::Drawing::Size(114, 20);
+			this->textBox5->TabIndex = 10;
 			// 
 			// label6
 			// 
@@ -251,23 +376,12 @@ namespace Dentistry {
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"Серия:";
 			// 
-			// textBox5
+			// textBox4
 			// 
-			this->textBox5->Location = System::Drawing::Point(62, 204);
-			this->textBox5->Name = L"textBox5";
-			this->textBox5->Size = System::Drawing::Size(114, 20);
-			this->textBox5->TabIndex = 10;
-			// 
-			// label7
-			// 
-			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(5, 204);
-			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(51, 16);
-			this->label7->TabIndex = 11;
-			this->label7->Text = L"Номер";
+			this->textBox4->Location = System::Drawing::Point(62, 176);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(30, 20);
+			this->textBox4->TabIndex = 7;
 			// 
 			// label9
 			// 
@@ -289,121 +403,9 @@ namespace Dentistry {
 			this->textBox6->Size = System::Drawing::Size(94, 24);
 			this->textBox6->TabIndex = 11;
 			// 
-			// pictureBox1
-			// 
-			this->pictureBox1->Location = System::Drawing::Point(275, 36);
-			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(198, 184);
-			this->pictureBox1->TabIndex = 13;
-			this->pictureBox1->TabStop = false;
-			// 
-			// label10
-			// 
-			this->label10->AutoSize = true;
-			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label10->Location = System::Drawing::Point(351, 16);
-			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(42, 16);
-			this->label10->TabIndex = 14;
-			this->label10->Text = L"Фото";
-			// 
-			// label11
-			// 
-			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label11->Location = System::Drawing::Point(7, 328);
-			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(151, 16);
-			this->label11->TabIndex = 16;
-			this->label11->Text = L"Номер моб. телефона";
-			// 
-			// textBox7
-			// 
-			this->textBox7->Location = System::Drawing::Point(164, 328);
-			this->textBox7->Name = L"textBox7";
-			this->textBox7->Size = System::Drawing::Size(91, 20);
-			this->textBox7->TabIndex = 15;
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label12->Location = System::Drawing::Point(5, 231);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(130, 16);
-			this->label12->TabIndex = 18;
-			this->label12->Text = L"Город проживания";
-			// 
-			// textBox8
-			// 
-			this->textBox8->Location = System::Drawing::Point(138, 230);
-			this->textBox8->Name = L"textBox8";
-			this->textBox8->Size = System::Drawing::Size(117, 20);
-			this->textBox8->TabIndex = 17;
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label13->Location = System::Drawing::Point(5, 259);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(48, 16);
-			this->label13->TabIndex = 20;
-			this->label13->Text = L"Адрес";
-			// 
-			// textBox9
-			// 
-			this->textBox9->Location = System::Drawing::Point(68, 258);
-			this->textBox9->Name = L"textBox9";
-			this->textBox9->Size = System::Drawing::Size(187, 20);
-			this->textBox9->TabIndex = 19;
-			// 
-			// label14
-			// 
-			this->label14->AutoSize = true;
-			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label14->Location = System::Drawing::Point(5, 109);
-			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(110, 16);
-			this->label14->TabIndex = 22;
-			this->label14->Text = L"Дата рождения:";
-			// 
-			// textBox10
-			// 
-			this->textBox10->Location = System::Drawing::Point(176, 109);
-			this->textBox10->Name = L"textBox10";
-			this->textBox10->Size = System::Drawing::Size(64, 20);
-			this->textBox10->TabIndex = 21;
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(6, 151);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(141, 16);
-			this->label5->TabIndex = 23;
-			this->label5->Text = L"Паспортные данные";
-			// 
-			// label15
-			// 
-			this->label15->AutoSize = true;
-			this->label15->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label15->Location = System::Drawing::Point(8, 300);
-			this->label15->Name = L"label15";
-			this->label15->Size = System::Drawing::Size(73, 16);
-			this->label15->TabIndex = 24;
-			this->label15->Text = L"Контакты:";
-			// 
 			// MyForm
 			// 
+			this->AccessibleName = L"FormPatient";
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(705, 415);
@@ -414,6 +416,7 @@ namespace Dentistry {
 			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->Name = L"MyForm";
 			this->Text = L"Карта пациента";
 			this->groupBox1->ResumeLayout(false);
@@ -424,5 +427,8 @@ namespace Dentistry {
 
 		}
 #pragma endregion
-	};
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+};
 }
