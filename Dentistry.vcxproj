@@ -118,16 +118,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataAccess.cpp" />
     <ClCompile Include="FormMain.cpp" />
     <ClCompile Include="FormPatient.cpp" />
+    <ClCompile Include="RoundedButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataAccess.h" />
     <ClInclude Include="FormMain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="FormPatient.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RoundedButton.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FormMain.resx">
@@ -136,6 +141,9 @@
     <EmbeddedResource Include="FormPatient.resx">
       <DependentUpon>FormPatient.h</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Dentistry.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
