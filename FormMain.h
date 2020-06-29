@@ -125,7 +125,7 @@ namespace Dentistry {
 	}
 	private: System::Void tsmiRegistration_Click(System::Object^ sender, System::EventArgs^ e) {
 		FormPatient^ frm = gcnew FormPatient;
-		   frm->Show();
+		   frm->ShowDialog();
 	}
 };
 }

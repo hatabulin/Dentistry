@@ -66,6 +66,8 @@ namespace Dentistry {
 	private: System::Windows::Forms::ImageList^ imageList1;
 	private: System::Windows::Forms::Button^ btnConfirm;
 	private: System::Windows::Forms::TrackBar^ trackBar1;
+	private: System::Windows::Forms::GroupBox^ groupBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBoxJaw;
 
 	private:
 	private: System::ComponentModel::IContainer^ components;
@@ -113,9 +115,13 @@ namespace Dentistry {
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->btnAccept = (gcnew System::Windows::Forms::Button());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+			this->pictureBoxJaw = (gcnew System::Windows::Forms::PictureBox());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPhoto))->BeginInit();
+			this->groupBox2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxJaw))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tbSurname
@@ -179,7 +185,7 @@ namespace Dentistry {
 			this->btnCancel->DialogResult = System::Windows::Forms::DialogResult::Cancel;
 			this->btnCancel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->btnCancel->Location = System::Drawing::Point(234, 408);
+			this->btnCancel->Location = System::Drawing::Point(264, 408);
 			this->btnCancel->Name = L"btnCancel";
 			this->btnCancel->Size = System::Drawing::Size(88, 26);
 			this->btnCancel->TabIndex = 10;
@@ -455,12 +461,36 @@ namespace Dentistry {
 			this->btnAccept->Enabled = false;
 			this->btnAccept->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->btnAccept->Location = System::Drawing::Point(141, 408);
+			this->btnAccept->Location = System::Drawing::Point(157, 408);
 			this->btnAccept->Name = L"btnAccept";
 			this->btnAccept->Size = System::Drawing::Size(86, 26);
 			this->btnAccept->TabIndex = 13;
 			this->btnAccept->Text = L"Сохранить";
 			this->btnAccept->UseVisualStyleBackColor = true;
+			// 
+			// groupBox2
+			// 
+			this->groupBox2->Controls->Add(this->pictureBoxJaw);
+			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox2->Location = System::Drawing::Point(513, 48);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(338, 354);
+			this->groupBox2->TabIndex = 14;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Челюсть (3D вид)";
+			// 
+			// pictureBoxJaw
+			// 
+			this->pictureBoxJaw->BackColor = System::Drawing::Color::LightGray;
+			this->pictureBoxJaw->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->pictureBoxJaw->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pictureBoxJaw->Cursor = System::Windows::Forms::Cursors::SizeAll;
+			this->pictureBoxJaw->Location = System::Drawing::Point(6, 21);
+			this->pictureBoxJaw->Name = L"pictureBoxJaw";
+			this->pictureBoxJaw->Size = System::Drawing::Size(326, 307);
+			this->pictureBoxJaw->TabIndex = 14;
+			this->pictureBoxJaw->TabStop = false;
 			// 
 			// FormPatient
 			// 
@@ -468,7 +498,8 @@ namespace Dentistry {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->CancelButton = this->btnCancel;
-			this->ClientSize = System::Drawing::Size(507, 439);
+			this->ClientSize = System::Drawing::Size(863, 439);
+			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->btnAccept);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->textBox6);
@@ -483,6 +514,8 @@ namespace Dentistry {
 			this->groupBox1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPhoto))->EndInit();
+			this->groupBox2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxJaw))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -510,8 +543,8 @@ namespace Dentistry {
 			if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
 			{
 				String^ fileName = gcnew String(openFileDialog1->FileName); 
-				pictureBoxPhoto->Image = Image::FromFile(fileName);
-				pictureBoxPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Normal;
+				pictureBoxPhoto->Image = gcnew Bitmap(fileName);//Image::FromFile(fileName);
+				pictureBoxPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;//Normal;
 				btnAccept->Enabled = true;
 				trackBar1->Enabled = true;
 			} else btnAccept->Enabled = false;
