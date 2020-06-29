@@ -68,6 +68,7 @@ namespace Dentistry {
 	private: System::Windows::Forms::TrackBar^ trackBar1;
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBoxJaw;
+	private: System::Windows::Forms::Button^ btnConnect;
 
 	private:
 	private: System::ComponentModel::IContainer^ components;
@@ -117,6 +118,7 @@ namespace Dentistry {
 			this->btnAccept = (gcnew System::Windows::Forms::Button());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->pictureBoxJaw = (gcnew System::Windows::Forms::PictureBox());
+			this->btnConnect = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->trackBar1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPhoto))->BeginInit();
@@ -492,6 +494,16 @@ namespace Dentistry {
 			this->pictureBoxJaw->TabIndex = 14;
 			this->pictureBoxJaw->TabStop = false;
 			// 
+			// btnConnect
+			// 
+			this->btnConnect->Location = System::Drawing::Point(513, 9);
+			this->btnConnect->Name = L"btnConnect";
+			this->btnConnect->Size = System::Drawing::Size(75, 23);
+			this->btnConnect->TabIndex = 15;
+			this->btnConnect->Text = L"SQL Server";
+			this->btnConnect->UseVisualStyleBackColor = true;
+			this->btnConnect->Click += gcnew System::EventHandler(this, &FormPatient::btnConnect_Click);
+			// 
 			// FormPatient
 			// 
 			this->AccessibleName = L"FormPatient";
@@ -499,6 +511,7 @@ namespace Dentistry {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->CancelButton = this->btnCancel;
 			this->ClientSize = System::Drawing::Size(863, 439);
+			this->Controls->Add(this->btnConnect);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->btnAccept);
 			this->Controls->Add(this->label9);
@@ -521,51 +534,56 @@ namespace Dentistry {
 
 		}
 #pragma endregion
-		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-			this->Close();
-		}
-		private: System::Void FormPatient_Shown(System::Object^ sender, System::EventArgs^ e) {
-			tbName->Focus();
-		}
-		private: System::Void btnAccept_Click(System::Object^ sender, System::EventArgs^ e) {
-		}
-		private: System::Void tbName_Validating(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
-		}
-		private: System::Void btnImport_Click(System::Object^ sender, System::EventArgs^ e) {
-			
-			OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void FormPatient_Shown(System::Object^ sender, System::EventArgs^ e) {
+		tbName->Focus();
+	}
+	private: System::Void btnAccept_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void tbName_Validating(System::Object^ sender, System::ComponentModel::CancelEventArgs^ e) {
+	}
+	private: System::Void btnImport_Click(System::Object^ sender, System::EventArgs^ e) {
 
-			//openFileDialog1->InitialDirectory = "d:\\";
-			openFileDialog1->Filter = "Image files (*.jpg)|*.jpg|All files (*.*)|*.*";
-			openFileDialog1->FilterIndex = 1;
-			openFileDialog1->RestoreDirectory = true;
+		OpenFileDialog^ openFileDialog1 = gcnew OpenFileDialog;
 
-			if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
-			{
-				String^ fileName = gcnew String(openFileDialog1->FileName); 
-				pictureBoxPhoto->Image = gcnew Bitmap(fileName);//Image::FromFile(fileName);
-				pictureBoxPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;//Normal;
-				btnAccept->Enabled = true;
-				trackBar1->Enabled = true;
-			} else btnAccept->Enabled = false;
+		//openFileDialog1->InitialDirectory = "d:\\";
+		openFileDialog1->Filter = "Image files (*.jpg)|*.jpg|All files (*.*)|*.*";
+		openFileDialog1->FilterIndex = 1;
+		openFileDialog1->RestoreDirectory = true;
+
+		if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			String^ fileName = gcnew String(openFileDialog1->FileName);
+			pictureBoxPhoto->Image = gcnew Bitmap(fileName);//Image::FromFile(fileName);
+			pictureBoxPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;//Normal;
+			btnAccept->Enabled = true;
+			trackBar1->Enabled = true;
 		}
+		else btnAccept->Enabled = false;
+	}
 	private: System::Void pictureBoxPhoto_DragEnter(System::Object^ sender, System::Windows::Forms::DragEventArgs^ e) {
 		pictureBoxIsDrageed = true;
-/*		if (e->Data->GetDataPresent(DataFormats->Bitmap))
-			e->Effect = DragDropEffects->Move; */
-	
+		/*		if (e->Data->GetDataPresent(DataFormats->Bitmap))
+					e->Effect = DragDropEffects->Move; */
+
 	}
-private: System::Void pictureBoxPhoto_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
-	if (pictureBoxIsDrageed) {
-		pictureBoxPhoto->Location = System::Drawing::Point(e->X, e->Y);
+	private: System::Void pictureBoxPhoto_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		if (pictureBoxIsDrageed) {
+			pictureBoxPhoto->Location = System::Drawing::Point(e->X, e->Y);
+			pictureBoxPhoto->Invalidate();
+		}
+	}
+	private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e) {
+		this->pictureBoxPhoto->Size = System::Drawing::Size(pictureBoxPhoto->Width * trackBar1->Value / 100, pictureBoxPhoto->Height * trackBar1->Value / 100);
+
+		pictureBoxPhoto->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
 		pictureBoxPhoto->Invalidate();
 	}
+	private: System::Void btnConnect_Click(System::Object^ sender, System::EventArgs^ e) {
+		
+	}
+	};
 }
-private: System::Void trackBar1_Scroll(System::Object^ sender, System::EventArgs^ e) {
-	this->pictureBoxPhoto->Size = System::Drawing::Size(pictureBoxPhoto->Width * trackBar1->Value /100, pictureBoxPhoto->Height * trackBar1->Value / 100);
-	
-	pictureBoxPhoto->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
-	pictureBoxPhoto->Invalidate();
-}
-};
-}
+

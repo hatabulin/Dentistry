@@ -118,13 +118,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DataAccess.cpp" />
+    <ClCompile Include="DataBaseAccess.cpp" />
     <ClCompile Include="FormMain.cpp" />
     <ClCompile Include="FormPatient.cpp" />
     <ClCompile Include="RoundedButton.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataAccess.h" />
+    <ClInclude Include="DataBaseAccess.h" />
     <ClInclude Include="FormMain.h">
       <FileType>CppForm</FileType>
     </ClInclude>
